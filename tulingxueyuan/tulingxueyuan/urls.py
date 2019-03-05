@@ -15,7 +15,13 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-
+from django.contrib import admin
+from django.urls import path,re_path
+# from django.urls import path,include
+from teacher import views as tv
 urlpatterns = [
+    # path('',include('Chamico.urls')),
     path('admin/', admin.site.urls),
+    re_path(r'^normalmap/',tv.do_normalmap),
+    re_path(r'^withparam/(?P<year>[0-9]{4})/(?P<month>[0-1][0-9])',tv.withparam)
 ]
